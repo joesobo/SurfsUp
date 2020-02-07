@@ -1,6 +1,4 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-import java.util.List;
-import java.util.ArrayList;
 
 /**
  * Write a description of class MyWorld here.
@@ -11,7 +9,6 @@ import java.util.ArrayList;
 public class MyWorld extends World
 {
     Player player;
-    private Counter counter;
     
     public MyWorld()
     {    
@@ -19,22 +16,6 @@ public class MyWorld extends World
         player = new Player();
         addObject(player, 300, 300);
         addObject(new ObstacleSpawner(), 300, 300);
-    }
-    
-    public void act(){
-        countScore();
-    }
-    
-    public void countScore(){
-        if(counter == null){
-            counter = new Counter("Score: ");
-            int x = 550;
-            int y = 25;
-            
-            addObject(counter, x, y);
-        }
-        if(getObjects(Player.class).size() != 0){
-            counter.increment();
-        }
+        addObject(new ScoreCounter(), 300, 300);
     }
 }
