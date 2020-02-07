@@ -19,5 +19,6 @@ public class MyWorld extends World
         addObject(new ObstacleSpawner(), 300, 300);
         
         setPaintOrder(Counter.class, Obstacle.class);
+        setPaintOrder(Health.class, Obstacle.class);
     }
 }
