@@ -17,5 +17,7 @@ public class MyWorld extends World
         addObject(player, 300, 300);
         addObject(new ScoreCounter(), 300, 300);
         addObject(new ObstacleSpawner(), 300, 300);
+        
+        setPaintOrder(Counter.class, Obstacle.class);
     }
 }
