@@ -2,7 +2,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, and Greenfoot)
 
 public class Counter extends Actor
 {
-    private int value = 0;
+    public int value = 0;
     private String text;
 
     /**

@@ -8,12 +8,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Obstacle extends Actor
 {
-    private double SPEED = Greenfoot.getRandomNumber(3) + 1;
+    private int maxSpeed = 0;
+    private double speed = 0;
     private double xPos = 0;
     private double yPos = 0;
     private Player player = null;
 
     public void addedToWorld(World world){
+        maxSpeed = (int)Math.floor(getWorld().getObjects(Counter.class).get(0).value / 1000);
+        int ran = Greenfoot.getRandomNumber((10 * maxSpeed) + 1) + 10;
+        speed = (double)ran / 10;
+         
         xPos = getX();
         yPos = getY();
         if(getWorld() != null){
@@ -40,7 +45,7 @@ public class Obstacle extends Actor
 
     private void move()
     {
-        yPos -= SPEED;
+        yPos -= speed;
     }
 
     private void checkHeight(){

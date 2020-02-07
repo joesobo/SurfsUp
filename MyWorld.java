@@ -15,7 +15,7 @@ public class MyWorld extends World
         super(600, 600, 1);
         player = new Player();
         addObject(player, 300, 300);
-        addObject(new ObstacleSpawner(), 300, 300);
         addObject(new ScoreCounter(), 300, 300);
+        addObject(new ObstacleSpawner(), 300, 300);
     }
 }
