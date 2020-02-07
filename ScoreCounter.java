@@ -18,7 +18,7 @@ public class ScoreCounter extends Actor
     public void countScore(){
         if(counter == null){
             counter = new Counter("Score: ");
-            int x = 550;
+            int x = 525;
             int y = 25;
             
             getWorld().addObject(counter, x, y);
