@@ -28,11 +28,13 @@ public class MyWorld extends World
     public void countScore(){
         if(counter == null){
             counter = new Counter("Score: ");
-            int x = 400;
-            int y = 400;
+            int x = 550;
+            int y = 25;
             
             addObject(counter, x, y);
         }
-        counter.increment();
+        if(getObjects(Player.class).size() != 0){
+            counter.increment();
+        }
     }
 }

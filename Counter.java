@@ -19,7 +19,7 @@ public class Counter extends Actor
     public Counter(String prefix)
     {
         text = prefix;
-        int imageWidth= (text.length() + 2) * 10;
+        int imageWidth = (text.length() + 2) * 10;
         setImage(new GreenfootImage(imageWidth, 16));
         updateImage();
     }

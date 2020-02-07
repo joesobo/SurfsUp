@@ -12,7 +12,7 @@ public class Obstacle extends Actor
     private double xPos = 0;
     private double yPos = 0;
     private Player player = null;
-    
+
     public void addedToWorld(World world){
         xPos = getX();
         yPos = getY();
@@ -22,29 +22,33 @@ public class Obstacle extends Actor
             }
         }
     }
-    
+
     public void act() 
     {
-        move();
-        
-        setLocation(getX(), (int)xPos);
-        setLocation(getY(), (int)yPos);
-        
-        checkHeight();
-        checkHit();
+        if(getWorld() != null){
+            if(getWorld().getObjects(Player.class).size() != 0){
+                move();
+
+                setLocation(getX(), (int)xPos);
+                setLocation(getY(), (int)yPos);
+
+                checkHeight();
+                checkHit();
+            }
+        }
     } 
-    
+
     private void move()
     {
         yPos -= SPEED;
     }
-    
+
     private void checkHeight(){
         if(yPos <= 10){
             getWorld().removeObject(this);
         }
     }
-    
+
     private void checkHit(){
         if(getWorld() != null){
             if(isTouching(Player.class)){
