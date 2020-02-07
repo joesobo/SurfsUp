@@ -40,6 +40,8 @@ public class Counter extends Actor
     {
         GreenfootImage image = getImage();
         image.clear();
+        image.setColor(Color.WHITE);
+        image.setFont(new Font("", true, false, 16));
         image.drawString(text + value, 1, 12);
     }
 }
