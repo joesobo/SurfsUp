@@ -27,9 +27,9 @@ public class Player extends Actor
         xPos = getX();
         yPos = getY();
         
-        world.addObject(new Health(), 30, 30);
-        world.addObject(new Health(), 90, 30);
-        world.addObject(new Health(), 150, 30);
+        world.addObject(new Health(), 15, 15);
+        world.addObject(new Health(), 45, 15);
+        world.addObject(new Health(), 75, 15);
         
         healthList = world.getObjects(Health.class);
     }

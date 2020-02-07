@@ -8,12 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Health extends Actor
 {
-    /**
-     * Act - do whatever the Health wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
+    public Health()
     {
-        // Add your action code here.
-    } 
+        GreenfootImage image = getImage();
+        image.scale(image.getWidth() - 25, image.getHeight() - 25);
+        setImage(image);
+    }
 }
