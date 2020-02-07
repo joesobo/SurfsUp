@@ -19,6 +19,6 @@ public class ObstacleSpawner extends Actor
     }
     
     private void createObstacle(){
-       getWorld().addObject(new Obstacle(), Greenfoot.getRandomNumber(600), 600);
+       getWorld().addObject(new Barrel(), Greenfoot.getRandomNumber(600), 600);
     }
 }
