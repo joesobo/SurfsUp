@@ -32,6 +32,11 @@ public class Counter extends Actor
         value++;
         updateImage();
     }
+    
+    public void incrementAmount(int amount){
+        value += amount;
+        updateImage();
+    }
 
     /**
      * Show the current text and count on this actor's image.

@@ -18,6 +18,7 @@ public class Player extends Actor
     List<Health> healthList = new ArrayList<Health>();
     private int trailCount = 0;
     private int trailFreq = 20;
+    private int coinWorth = 100;
     
     public Player(){
         player = getImage();
@@ -106,8 +107,15 @@ public class Player extends Actor
     }
     
     public void hitPlayer(){
-        if (isTouching(Obstacle.class)){
+        if (isTouching(Barrel.class)){
             removeHealth();
+        }
+        if(getWorld() != null){
+            if(getWorld().getObjects(Player.class).size() != 0){
+                if (isTouching(Coin.class)){
+                    getWorld().getObjects(Counter.class).get(0).incrementAmount(coinWorth);
+                }
+            }
         }
     }
     

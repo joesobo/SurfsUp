@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Barrel extends Obstacle
+public class Coin extends Obstacle
 {
     private int maxSpeed = 0;
     private double minSpeed = 0.5;

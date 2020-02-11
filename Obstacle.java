@@ -27,9 +27,11 @@ public class Obstacle extends Actor
     
     private void checkHit(){
         if(getWorld() != null){
-            if(isTouching(Player.class)){
-                player.hitPlayer();
-                getWorld().removeObject(this);
+            if(getWorld().getObjects(Player.class).size() != 0){
+                if(isTouching(Player.class)){
+                    player.hitPlayer();
+                    getWorld().removeObject(this);
+                }
             }
         }
     }
