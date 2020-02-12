@@ -16,38 +16,43 @@ public class Player extends Actor
     private double yPos = 0;
     private GreenfootImage player;
     List<Health> healthList = new ArrayList<Health>();
+    private int hitCooldown = 0;
     private int trailCount = 0;
     private int trailFreq = 20;
     private int coinWorth = 100;
-    
+
     public Player(){
         player = getImage();
     }
-    
+
     public void addedToWorld(World world){
         xPos = getX();
         yPos = getY();
-        
+
         world.addObject(new Health(), 15, 15);
         world.addObject(new Health(), 45, 15);
         world.addObject(new Health(), 75, 15);
-        
+
         healthList = world.getObjects(Health.class);
     }
-    
+
     public void act() 
     {
         processKeys();
-        
+
         setLocation(getX(), (int)xPos);
         setLocation(getY(), (int)yPos);
-        
+
         checkCollision();
-        
+
         handleTrailDrop();
         trailCount++;
+
+        if(hitCooldown > 0){
+            hitCooldown--;
+        }
     }    
-    
+
     private void processKeys(){
         if(Greenfoot.isKeyDown("right")){
             xVel += 0.5;
@@ -61,7 +66,7 @@ public class Player extends Actor
         if(Greenfoot.isKeyDown("down")){
             yVel -= 0.5;
         }
-        
+
         if(yVel > 0){
             yPos -= yVel / 10;
             yVel -= 0.01;
@@ -78,10 +83,10 @@ public class Player extends Actor
             xPos += xVel / 10;
             xVel += 0.01;
         }
-        
+
         setImage(player);
     }
-    
+
     private void checkCollision(){
         //check floor
         if(getY() > 590){
@@ -93,7 +98,7 @@ public class Player extends Actor
             yVel = 0;
             yPos = 10;
         }
-        
+
         //check right wall
         if(getX() > 590){
             xVel = 0;
@@ -105,10 +110,14 @@ public class Player extends Actor
             xPos = 10;
         }
     }
-    
+
     public void hitPlayer(){
+
         if (isTouching(Barrel.class)){
-            removeHealth();
+            if(hitCooldown == 0){
+                hitCooldown = 15;
+                removeHealth();
+            }
         }
         if(getWorld() != null){
             if(getWorld().getObjects(Player.class).size() != 0){
@@ -118,26 +127,28 @@ public class Player extends Actor
             }
         }
     }
-    
+
     private void removePlayer(){
         if(getWorld() != null){
             getWorld().removeObject(this);
         }
     }
-    
+
     private void removeHealth(){
         int size = healthList.size();
-        
+
+        getWorld().addObject(new HitVisual(), 300, 300);
+
         if(getWorld() != null){
             getWorld().removeObject(healthList.get(size-1));
             healthList.remove(size-1);
         }
-        
+
         if(size == 1){
             removePlayer();
         }
     }
-    
+
     private void handleTrailDrop(){
         if(trailCount % trailFreq == 0){
             WaterTrail t = new WaterTrail();
