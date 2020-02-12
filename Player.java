@@ -22,6 +22,8 @@ public class Player extends Actor
     private int trailFreq = 20;
     private int coinWorth = 100;
     private int coins = 0;
+    private int invincibleTimer = 0;
+    private InvincibleDisplay invincible;
 
     public Player(){
         player = getImage();
@@ -52,6 +54,14 @@ public class Player extends Actor
 
         if(hitCooldown > 0){
             hitCooldown--;
+        }
+        if(invincible != null){
+            if(invincibleTimer > 0){
+                invincibleTimer--;
+                invincible.setPos(getX(), getY());
+            }else{
+                getWorld().removeObject(invincible);
+            }
         }
     }    
 
@@ -114,9 +124,8 @@ public class Player extends Actor
     }
 
     public void hitPlayer(){
-
         if (isTouching(Barrel.class)){
-            if(hitCooldown == 0){
+            if(hitCooldown == 0 && invincibleTimer == 0){
                 hitCooldown = 15;
                 removeHealth();
             }
@@ -125,6 +134,16 @@ public class Player extends Actor
             if(getWorld().getObjects(Player.class).size() != 0){
                 if (isTouching(Heart.class)){
                     addHealth();
+                }
+            }
+        }
+        if(getWorld() != null){
+            if(getWorld().getObjects(Player.class).size() != 0){
+                if (isTouching(Invulnerable.class)){
+                    invincibleTimer = 60;
+                    invincible = new InvincibleDisplay();
+                    getWorld().addObject(invincible, getX(), getY());
+                    invincible.setLocation(getX(), getY());
                 }
             }
         }

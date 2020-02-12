@@ -18,6 +18,6 @@ public class MyWorld extends World
         addObject(new ScoreCounter(), 300, 300);
         addObject(new ObstacleSpawner(), 300, 300); 
         
-        setPaintOrder(FinalScreen.class, Counter.class, Health.class, Player.class, Obstacle.class, WaterTrail.class);
+        setPaintOrder(FinalScreen.class, Counter.class, Health.class, InvincibleDisplay.class, Player.class, Obstacle.class, WaterTrail.class);
     }
 }
