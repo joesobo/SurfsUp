@@ -121,6 +121,13 @@ public class Player extends Actor
         }
         if(getWorld() != null){
             if(getWorld().getObjects(Player.class).size() != 0){
+                if (isTouching(Heart.class)){
+                    addHealth();
+                }
+            }
+        }
+        if(getWorld() != null){
+            if(getWorld().getObjects(Player.class).size() != 0){
                 if (isTouching(Coin.class)){
                     getWorld().getObjects(Counter.class).get(0).incrementAmount(coinWorth);
                 }
@@ -137,7 +144,7 @@ public class Player extends Actor
     private void removeHealth(){
         int size = healthList.size();
 
-        getWorld().addObject(new HitVisual(), 300, 300);
+        getWorld().addObject(new HitVisual(), 300, 320);
 
         if(getWorld() != null){
             getWorld().removeObject(healthList.get(size-1));
@@ -146,6 +153,22 @@ public class Player extends Actor
 
         if(size == 1){
             removePlayer();
+        }
+    }
+    
+    private void addHealth(){
+        int size = healthList.size();
+        
+        if(getWorld() != null){
+            if(size > 0 && size < 3){
+                if(size == 2){
+                    getWorld().addObject(new Health(), 75, 15);
+        
+                }else{
+                    getWorld().addObject(new Health(), 45, 15);
+                }
+                healthList = getWorld().getObjects(Health.class);
+            }
         }
     }
 

@@ -9,7 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class ObstacleSpawner extends Actor
 {
     int numOfObj = 10;
-    private int coinSpawnChance = 1;
+    private int coinSpawnChance = 25;
+    private int heartSpawnChance = 1;
     
     public void act(){
         if(getWorld().getObjects(Player.class) != null){
@@ -21,8 +22,12 @@ public class ObstacleSpawner extends Actor
     
     private void createObstacle(){
        int coinSpawn = getRandomNumber(0, coinSpawnChance);
+       int heartSpawn = getRandomNumber(0, heartSpawnChance);
        if(coinSpawn == 1){
            getWorld().addObject(new Coin(), Greenfoot.getRandomNumber(600), 600);
+       }
+       else if(heartSpawn == 1){
+           getWorld().addObject(new Heart(), Greenfoot.getRandomNumber(600), 600);
        }else{
            getWorld().addObject(new Barrel(), Greenfoot.getRandomNumber(600), 600);
        }

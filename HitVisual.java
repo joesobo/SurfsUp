@@ -15,7 +15,7 @@ public class HitVisual extends Actor
     public HitVisual() 
     {
         image = getImage();
-        image.scale(image.getWidth() + 600, image.getHeight() + 600);
+        image.scale(image.getWidth()-700, image.getHeight()-740);
         image.setTransparency(transparency);
         setImage(image);
         timer = 15;
