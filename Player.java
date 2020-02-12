@@ -1,3 +1,4 @@
+
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class Player extends Actor
     private int trailCount = 0;
     private int trailFreq = 20;
     private int coinWorth = 100;
+    private int coins = 0;
 
     public Player(){
         player = getImage();
@@ -129,7 +131,8 @@ public class Player extends Actor
         if(getWorld() != null){
             if(getWorld().getObjects(Player.class).size() != 0){
                 if (isTouching(Coin.class)){
-                    getWorld().getObjects(Counter.class).get(0).incrementAmount(coinWorth);
+                    //getWorld().getObjects(Counter.class).get(0).incrementAmount(coinWorth);
+                    coins++;
                 }
             }
         }
@@ -137,7 +140,16 @@ public class Player extends Actor
 
     private void removePlayer(){
         if(getWorld() != null){
+            //start displaying final score
+            FinalScreen finalScreen = new FinalScreen("Score: ", getWorld().getObjects(Counter.class).get(0).value, coins, (int)Math.floor(getWorld().getObjects(Counter.class).get(0).value / 1000));
+            int x = 300;
+            int y = 300;
+            
+            getWorld().addObject(finalScreen, x, y);            
+            
+            //destroy player
             getWorld().removeObject(this);
+            
         }
     }
 

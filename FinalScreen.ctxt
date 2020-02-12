@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=FinalScreen
+comment1.params=
+comment1.target=FinalScreen()
+comment1.text=\r\n\ Create\ a\ counter\ without\ a\ text\ prefix,\ initialized\ to\ zero.\r\n
+comment2.params=prefix\ score\ coins\ level
+comment2.target=FinalScreen(java.lang.String,\ int,\ int,\ int)
+comment2.text=\r\n\ Create\ a\ counter\ with\ a\ given\ text\ prefix,\ initialized\ to\ zero.\r\n
+comment3.params=
+comment3.target=void\ updateImage()
+comment3.text=\r\n\ Show\ the\ current\ text\ and\ count\ on\ this\ actor's\ image.\r\n
+numComments=4

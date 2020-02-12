@@ -9,8 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class ObstacleSpawner extends Actor
 {
     int numOfObj = 10;
-    private int coinSpawnChance = 25;
-    private int heartSpawnChance = 1;
+    private int coinSpawnChance = 5;
+    private int heartSpawnChance = 30;
     
     public void act(){
         if(getWorld().getObjects(Player.class) != null){

@@ -16,8 +16,8 @@ public class MyWorld extends World
         player = new Player();
         addObject(player, 300, 300);
         addObject(new ScoreCounter(), 300, 300);
-        addObject(new ObstacleSpawner(), 300, 300);
+        addObject(new ObstacleSpawner(), 300, 300); 
         
-        setPaintOrder(Counter.class, Health.class, Player.class, Obstacle.class, WaterTrail.class);
+        setPaintOrder(FinalScreen.class, Counter.class, Health.class, Player.class, Obstacle.class, WaterTrail.class);
     }
 }
