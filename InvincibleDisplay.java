@@ -22,10 +22,10 @@ public class InvincibleDisplay extends Actor
     
     private void updateImage(){
         int size = 50;
-        GreenfootImage image = new GreenfootImage(size + 1, size + 1);
+        GreenfootImage image = new GreenfootImage(size*2, size*2);
         int alpha = 60;
         image.setColor(new Color(50, 200, 150, alpha));
-        image.fillOval(0, 0, size, size);
+        image.fillOval(0, 0, size*2, size*2);
         setImage(image);
     }
 }

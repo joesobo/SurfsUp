@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.Random;
 /**
  * Write a description of class Obstacle here.
  * 
@@ -11,6 +11,7 @@ public class Obstacle extends Actor
     public double xPos = 0;
     public double yPos = 0;
     private Player player = null;
+    private String soundFile = null;
     
     public void act() {
         if(getWorld() != null){
@@ -30,6 +31,12 @@ public class Obstacle extends Actor
             if(getWorld().getObjects(Player.class).size() != 0){
                 if(isTouching(Player.class)){
                     player.hitPlayer();
+                    if (soundFile != null) {
+                        GreenfootSound sound = new GreenfootSound(soundFile);
+                        sound.setVolume(80);
+                        sound.play();
+                        
+                    }
                     getWorld().removeObject(this);
                 }
             }
@@ -59,4 +66,9 @@ public class Obstacle extends Actor
     public void setPlayer(Player p){
         player = p;
     }
+    
+    public void setSound(String filename) {
+        this.soundFile = filename;
+    }
+   
 }
