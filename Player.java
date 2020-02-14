@@ -24,8 +24,10 @@ public class Player extends Actor
     private int coins = 0;
     private int invincibleTimer = 0;
     private InvincibleDisplay invincible;
+    private GreenfootSound hurt = new GreenfootSound("hurt.wav");
 
     public Player(){
+        hurt.setVolume(76);
         player = getImage();
     }
 
@@ -124,23 +126,29 @@ public class Player extends Actor
     }
 
     public void hitPlayer(){
-        if (isTouching(Barrel.class)){
+
+        if (isTouching(Barrel.class) || isTouching(Shark.class)){
             if(hitCooldown == 0 && invincibleTimer == 0){
+                if (isTouching(Shark.class)) Greenfoot.playSound("bite.wav");
                 hitCooldown = 15;
                 removeHealth();
+                hurt.play();
             }
         }
         if(getWorld() != null){
             if(getWorld().getObjects(Player.class).size() != 0){
                 if (isTouching(Heart.class)){
                     addHealth();
+                    Greenfoot.playSound("heart.wav");
                 }
             }
         }
         if(getWorld() != null){
             if(getWorld().getObjects(Player.class).size() != 0){
                 if (isTouching(Invulnerable.class)){
-                    invincibleTimer = 60;
+                    Greenfoot.playSound("invu.wav");
+                    invincibleTimer = 150;
+                    if (invincible != null) getWorld().removeObject(invincible);
                     invincible = new InvincibleDisplay();
                     getWorld().addObject(invincible, getX(), getY());
                     invincible.setLocation(getX(), getY());
@@ -164,6 +172,7 @@ public class Player extends Actor
             int x = 300;
             int y = 300;
             
+            getWorld().addObject(new RipImage(),x , y);
             getWorld().addObject(finalScreen, x, y);            
             
             //destroy player

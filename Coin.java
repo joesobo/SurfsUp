@@ -13,6 +13,11 @@ public class Coin extends Obstacle
     private double speed = 0;
     //high values = slower increase
     private int rateOfSpeedIncrease = 1000;
+    private GifImage coin = new GifImage("coin.gif");
+    
+    public Coin() {
+        super.setSound("coin.wav");
+    }
     
     public void addedToWorld(World world){
         maxSpeed = (int)Math.floor(getWorld().getObjects(Counter.class).get(0).value / rateOfSpeedIncrease);
@@ -35,7 +40,9 @@ public class Coin extends Obstacle
         }
         
         super.act();
-        
+        GreenfootImage current = new GreenfootImage(coin.getCurrentImage());
+        current.scale(current.getWidth()/2, current.getHeight()/2);
+        setImage(current);
         checkHeight();
     } 
 

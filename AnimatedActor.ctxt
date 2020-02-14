@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=AnimatedActor
+comment0.text=\n\ The\ AnimatedActor\ class\ serves\ as\ a\ superclass\ for\ other,\ more\ specific\n\ Actor\ classes.\ It\ provides\ a\ mechanism\ to\ give\ actors\ an\ animated\ image.<p>\n\ \n\ To\ use\ this\ class,\ you\ need\ a\ sequence\ of\ image\ files\ to\ be\ used\ for\ the\n\ animation.\ Let's\ say\ we\ create\ four\ files\ named\ "cat0.png",\ "cat1.png",\n\ "cat2.png"\ and\ "cat3.png".\ In\ this\ case,\ our\ base\ name\ would\ be\ "cat",\ the\n\ suffix\ is\ ".png",\ and\ the\ number\ of\ images\ is\ 4.<p>\n\ \n\ You\ can\ create\ an\ animated\ actor\ by\ subclassing\ this\ class,\ and\ calling\ this\n\ class's\ constructor\ with\ the\ base\ name,\ suffix,\ and\ number\ of\ images\ as\ a\ \n\ parameter.\ So,\ to\ make\ an\ animated\ cat,\ I\ might\ have\ a\ subclass\ 'Cat'\ with\ \n\ the\ folling\ constructor"<p>\n\ \n\ <pre>\n\ \ \ public\ Cat()\ {\n\ \ \ \ \ \ \ super("cat",\ ".png",\ 4);\n\ \ \ }\n\ <pre>\n\ \n\ The\ image\ files\ have\ to\ be\ numbered\ starting\ at\ 0,\ and\ they\ have\ to\ ve\ in\ the\n\ scenario's\ 'image'\ folder.<p>\n\ \n\ The\ image\ will\ change\ with\ every\ act\ step.\n\ \n\ @author\ mik\n\ @version\ 1.0\n
+comment1.params=basename\ suffix\ noOfImages\ scale\ scaleUp
+comment1.target=AnimatedActor(java.lang.String,\ java.lang.String,\ int,\ int,\ boolean)
+comment2.params=
+comment2.target=void\ act()
+comment2.text=\n\ Act\ -\ do\ whatever\ the\ AnimatedActor\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
+comment3.params=scale
+comment3.target=void\ setScale(int)
+comment4.params=slowBy
+comment4.target=void\ setAnimSlower(int)
+comment5.params=basename\ suffix\ noOfImages\ scale\ scaleUp
+comment5.target=void\ changeAnim(java.lang.String,\ java.lang.String,\ int,\ int,\ boolean)
+comment6.params=basename\ suffix\ noOfImages\ scale\ scaleUp
+comment6.target=void\ transitionAnim(java.lang.String,\ java.lang.String,\ int,\ int,\ boolean)
+numComments=7

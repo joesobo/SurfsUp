@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.Random;
 /**
  * Write a description of class Obstacle here.
  * 
@@ -13,11 +13,17 @@ public class Barrel extends Obstacle
     private double speed = 0;
     //high values = slower increase
     private int rateOfSpeedIncrease = 1000;
+    private String[] images = {"barrel.png", "firehydrant.png", 
+        "cat.png", "tree.png"};
+    
+    public Barrel() {
+        super.setSound("impact.wav");
+    }
     
     public void addedToWorld(World world){
         maxSpeed = (int)Math.floor(getWorld().getObjects(Counter.class).get(0).value / rateOfSpeedIncrease);
         speed = minSpeed + Math.random() * (maxSpeed + 1);
-
+        setRandImage();
         super.setXPos(getX());
         super.setYPos(getY());
         if(getWorld() != null){
@@ -48,5 +54,11 @@ public class Barrel extends Obstacle
         if(yPos <= 10){
             getWorld().removeObject(this);
         }
+    }
+    
+    public void setRandImage() {
+        Random r = new Random();
+        int randomNumber = r.nextInt(images.length);
+        setImage(images[randomNumber]);
     }
 }
